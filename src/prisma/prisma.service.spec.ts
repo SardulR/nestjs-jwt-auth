@@ -1,6 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from './prisma.service';
 
+// Mock the PrismaClient to avoid initialization errors
+jest.mock('@prisma/client', () => {
+  return {
+    PrismaClient: jest.fn().mockImplementation(() => {
+      return {
+        $connect: jest.fn(),
+        $disconnect: jest.fn(),
+      };
+    }),
+  };
+});
+
 describe('PrismaService', () => {
   let service: PrismaService;
 

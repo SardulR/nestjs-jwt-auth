@@ -42,6 +42,12 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
+# Prisma generated files
+/generated
+
+# Test mocks
+/__mocks__
+
 # temp directory
 .temp
 .tmp
